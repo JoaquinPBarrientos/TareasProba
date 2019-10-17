@@ -7,5 +7,7 @@ import scipy.stats as st # ocupar para distribuciones
 
 
 # Abrimos la BD.
-data_base = pd.read_csv() 
+data_base = pd.read_csv('data.xlsx')
+data_base = pd.DataFrame(data_base)
 
+print(data_base)
