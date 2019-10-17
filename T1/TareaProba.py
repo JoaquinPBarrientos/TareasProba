@@ -36,13 +36,7 @@ plt.show()
 print(tabla_frecuencias)
 	# P2.C
 	# Hay que calcular el promedio con la funcion .mean()
-	# Grafiquemos
 
-d = st.norm(promedio,des_standard)
-
-v = d.rvs(50)
-plt.hist(d.rvs(1000),normed = True)
-plt.show()
 promedio = (data_base.mean())[0]
 print("El promedio obtenido es",promedio)
 
@@ -52,7 +46,13 @@ print("La desviación estándar es",des_standard)
 	# Con ambos datos pordemos obtener el Coeficiente de Variacion
 
 	# Al ojo, es una desviación bastante "Normal" si la comparamos con la media y los datos.
+	# Grafiquemos
 
+d = st.norm(promedio,des_standard)
+d.pdf(0.5)
+
+plt.plot(range(200,320),d.pdf(range(200,320)))
+plt.show()
 
 
 	#P2.D
