@@ -32,7 +32,8 @@ print(tabla_frecuencias)
 	# Como son frecuencias absolutas, lo mejor es ver la cantidad de de veces que se repite cada valor.
 	# Entonces utilizaremos diagrama de barras.
 
-plt.hist(data_base["Numeros"])
+plt.hist(data_base["Numeros"],color ="orange")
+plt.title("Histograma con las frecuencias absolutas en datos no agrupados")
 plt.xlabel("Minutos usados")
 plt.ylabel("Frecuencia")
 plt.show()
@@ -52,15 +53,26 @@ print("La desviación estándar es",des_standard)
 
 	# Al ojo, es una desviación bastante "Normal" si la comparamos con la media y los datos.
 	# Grafiquemos
+	# Para este codigo se ultilizo al autor de esta pagina https://pythonforundergradengineers.com/plotting-normal-curve-with-python.html
 
 d = st.norm(promedio,des_standard)
-d.pdf(0.5)
-plt.title("Funcion de Densidad de Probabilidad en datos no agrupados")
-plt.ylabel('probabilidad')
+
+x1 = 201
+x2 = 320
+z1 = ( x1 - promedio ) / des_standard
+z2 = ( x2 - promedio) / des_standard
+
+plt.title("Funcion de Densidad de Probabilidad en datos no agrupados\n Z = (x - μ)/σ , μ = 260.64 , σ = 17.985, x =[221,300] ")
+plt.ylabel('Probabilidad')
 plt.xlabel('Valores')
-plt.plot(range(200,320),d.pdf(range(200,320)))
-plt.fill_between(range(190,320),d.pdf(range(190,320)),d.pdf(range(190,320))<0, color='blue', alpha=.15)
+x = np.arange(z1, z2, 0.001)
+x_all = np.arange(-10, 10, 0.001)
+y = st.norm.pdf(x,0,1)
+plt.plot(x,y)
+plt.legend("Z")
+plt.fill_between(x,y,y<0, color='blue', alpha=.15)
 plt.show()
+
 
 	#P2.D (DATOS NO AGRUPADOS)
 CV = des_standard/promedio
@@ -104,6 +116,9 @@ print(tabla_distribucion_frecuencias)
 	# P2.B
 	# A partir de los datos obtenidos en el paso anterior, podemos graficar el histograma. 
 
+plt.title("Histograma con las frecuencias absolutas en datos agrupados")
+plt.xlabel("Minutos usados en intervalos")
+plt.ylabel("Frecuencia")
 plt.bar(["[221, 231)","[231, 241)","[241, 251)","[251, 261)","[261, 271)","[271, 281)","[281, 291)","[291, 301)"],tabla_distribucion_frecuencias["FreqAbs"])
 plt.show()
 
@@ -129,13 +144,26 @@ print("La desviación estándar es",Desviacion_estandar)
 
 
 #Graficamos segun la distribucion normal
-d = st.norm(promedio,Desviacion_estandar)
+# Para este codigo se ultilizo al autor de esta pagina https://pythonforundergradengineers.com/plotting-normal-curve-with-python.html
+d = st.norm(promedio,Desviacion_estandar,)
 
-plt.plot(range(190,320),st.norm.pdf(range(190,320)))
-plt.title("Funcion de Densidad de Probabilidad en datos agrupados")
-plt.ylabel('probabilidad')
+d = st.norm(promedio,Desviacion_estandar)
+d.pdf(0.5)
+
+x1 = 201
+x2 = 320
+z1 = ( x1 - promedio ) / Desviacion_estandar
+z2 = ( x2 - promedio) / Desviacion_estandar
+
+plt.title("Funcion de Densidad de Probabilidad en datos no agrupados\n Z = (x - μ)/σ , μ = 261.56 , σ = 18.0407, x =[221,300] ")
+plt.ylabel('Probabilidad')
 plt.xlabel('Valores')
-plt.fill_between(range(190,320),d.pdf(range(190,320)),d.pdf(range(190,320))<0, color='blue', alpha=.15)
+x = np.arange(z1, z2, 0.001)
+x_all = np.arange(-10, 10, 0.001)
+y = st.norm.pdf(x,0,1)
+plt.plot(x,y,color = "y")
+plt.legend("Z")
+plt.fill_between(x,y,y<0, color='yellow', alpha=.1)
 plt.show()
 
 #P2.D (DATOS AGRUPADOS)
@@ -185,11 +213,17 @@ print(Matriz_Varianza_Covarianza)
 
 	#P3.B
 	# Obtenemos el grafico pedido.
-plt.scatter(base["EDAD_M"], base["PESO"])
+plt.title("Gráfico de dispersión")
+plt.ylabel('PESO')
+plt.xlabel('EDAD_M')
+plt.axis([5,70,0,7000])
+plt.scatter(base["EDAD_M"], base["PESO"],color = "grey")
+
 plt.show()
 		# Es explicativo debido a que a mayor edad es peor el metabolismo en el humano, 
 		# y puede tener más peso una persona más anciana que una joven por esos motivos.
 		# Así el peso del recien nacido tambien es mayor.
+		# Tambien solo los valores se encuentran entre las edades fertiles de las mujeres.
 
 
 	#P4.D
@@ -208,5 +242,7 @@ print(Matriz_Correlacion)
 
 
 
+
+     
 
      
