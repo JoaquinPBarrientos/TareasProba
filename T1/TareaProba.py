@@ -194,7 +194,11 @@ print(base)
 
 # Aqui obtenemos el vector esperanza de nuestras variables cuantitativas.
 Vector_Esperanza = [base["SEMANAS"].mean(),base["PESO"].mean(),base["EDAD_P"].mean(),base["EDAD_M"].mean(),base["TALLA"].mean(),base["HIJ_TOTAL"].mean()]
-print(Vector_Esperanza)
+
+print("El vector de esperanzas es el siguiente:",Vector_Esperanza)
+
+	#
+
 	# Ahora para sacaremos la matriz de varianza covarianza, pero para esto, queremos que todos los datos tengan coherencia entre ellos,
 	# por lo que elegimos datos del peso de la guagua, las semanas a las que nacio, talla, edad de la madre, y los hijos totales. 
 	#	Creemos que los hijos totales puede ser un factor ,o tener un relacion con la edad de la madre y otros aspectos.
