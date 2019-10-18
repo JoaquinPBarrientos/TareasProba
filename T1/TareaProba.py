@@ -7,8 +7,6 @@ import numpy as np
 import math
 import seaborn as sns
 # Pregunta 1
-
-
 # Pregunta 2
 # Abrimos la BD.
 
@@ -195,7 +193,7 @@ base = base.drop(['SEXO','DIA_NAC','MES_NAC','TIPO_PARTO','ANO_NAC','ATENC_PART'
 print(base)
 
 # Aqui obtenemos el vector esperanza de nuestras variables cuantitativas.
-Vector_Esperanza = [base["SEMANAS"].mean(),base["PESO"].mean(),base["EDAD_P"].mean(),base["EDAD_M"].mean(),base["TALLA"].mean(),base["HIJ_TOTAL"].mean(),]
+Vector_Esperanza = [base["SEMANAS"].mean(),base["PESO"].mean(),base["EDAD_P"].mean(),base["EDAD_M"].mean(),base["TALLA"].mean(),base["HIJ_TOTAL"].mean()]
 print(Vector_Esperanza)
 	# Ahora para sacaremos la matriz de varianza covarianza, pero para esto, queremos que todos los datos tengan coherencia entre ellos,
 	# por lo que elegimos datos del peso de la guagua, las semanas a las que nacio, talla, edad de la madre, y los hijos totales. 
@@ -224,7 +222,7 @@ plt.show()
 		# Tambien solo los valores se encuentran entre las edades fertiles de las mujeres.
 
 
-	#P4.D
+	#P3.D
 	# En este paso obtenemos la matriz de correlación
 Matriz_Correlacion = base.corr()
 print(Matriz_Correlacion)
